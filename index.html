@@ -8,11 +8,18 @@
     <title>Full Stack Interview Tracker</title>
 
     <style>
+
+        /* ================= GLOBAL ================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -31,13 +38,66 @@
             color: #0f172a;
         }
 
-        /* Progress */
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+
+            background: #ddd;
+            padding: 12px 20px;
+            margin-bottom: 30px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+        }
+
+        .navbar ul {
+            list-style: none;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            display: block;
+
+            color: rgb(73, 70, 70);
+            text-decoration: none;
+
+            padding: 10px 18px;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+            font-size: 15px;
+
+            transition: .3s;
+        }
+
+        .navbar a:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= PROGRESS ================= */
 
         .progress-container {
             background: white;
             padding: 20px;
+
             border-radius: 10px;
+
             margin-bottom: 30px;
+
             box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
         }
 
@@ -48,121 +108,191 @@
         .progress-bar {
             width: 100%;
             height: 25px;
+
             background: #ddd;
+
             border-radius: 30px;
+
             overflow: hidden;
+
             margin-top: 15px;
         }
 
         #progressFill {
             width: 0%;
             height: 100%;
+
             background: #22c55e;
+
             transition: .4s;
         }
 
         #progressText {
             margin-top: 12px;
+
             font-size: 18px;
             font-weight: bold;
+
             text-align: center;
         }
 
-        /* Section */
+
+        /* ================= SECTION ================= */
 
         .section {
             margin-top: 40px;
+
+            scroll-margin-top: 90px;
         }
 
         .section h2 {
             background: #2563eb;
+
             color: white;
+
             padding: 12px 18px;
+
             border-radius: 8px 8px 0 0;
         }
 
-        /* Table */
+
+        /* ================= TABLE ================= */
 
         table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    table-layout: fixed;
-}
+            width: 100%;
 
-th,
-td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    vertical-align: top;
-}
+            border-collapse: collapse;
 
-/* # column */
-th:nth-child(1),
-td:nth-child(1) {
-    width: 5%;
-    text-align: center;
-}
+            background: white;
 
-/* Question column */
-th:nth-child(2),
-td:nth-child(2) {
-    width: 30%;
-    text-align: left;
-}
+            table-layout: fixed;
+        }
 
-/* Interview Answer column */
-th:nth-child(3),
-td:nth-child(3) {
-    width: 55%;
-    text-align: left;
-}
+        th,
+        td {
+            padding: 12px;
 
-/* Completed column */
-th:nth-child(4),
-td:nth-child(4) {
-    width: 10%;
-    text-align: center;
-}
+            border: 1px solid #ddd;
 
-        /* Editable Answer */
+            vertical-align: top;
+        }
+
+        th {
+            background: #0f172a;
+            color: white;
+
+            text-align: center;
+        }
+
+
+        /* # COLUMN */
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 5%;
+
+            text-align: center;
+        }
+
+
+        /* QUESTION COLUMN */
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 25%;
+
+            text-align: left;
+        }
+
+
+        /* ANSWER COLUMN */
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            width: 60%;
+
+            text-align: left;
+        }
+
+
+        /* COMPLETED COLUMN */
+
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 10%;
+
+            text-align: center;
+        }
+
+
+        /* ================= ANSWER ================= */
 
         .answer {
             width: 100%;
+
             min-height: 110px;
+
             padding: 10px;
+
             resize: vertical;
+
             border: 1px solid #ccc;
+
             border-radius: 5px;
+
             line-height: 1.5;
+
             font-size: 15px;
+
             font-family: Arial, Helvetica, sans-serif;
         }
 
         .answer:focus {
             outline: none;
+
             border: 1px solid #2563eb;
+
             box-shadow: 0 0 4px rgba(37, 99, 235, .3);
         }
 
-        /* Checkbox */
+
+        /* ================= CHECKBOX ================= */
 
         input[type="checkbox"] {
             width: 20px;
             height: 20px;
+
             cursor: pointer;
         }
+
+
+        /* ================= QUESTION NUMBER ================= */
 
         .question-number {
             font-weight: bold;
         }
 
-        /* Mobile */
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 900px) {
 
             body {
                 padding: 10px;
+            }
+
+            .navbar {
+                top: 5px;
+            }
+
+            .navbar ul {
+                gap: 5px;
+            }
+
+            .navbar a {
+                padding: 8px 12px;
+
+                font-size: 13px;
             }
 
             table {
@@ -177,8 +307,11 @@ td:nth-child(4) {
             .answer {
                 min-height: 130px;
             }
+
         }
+
     </style>
+
 </head>
 
 
@@ -186,7 +319,45 @@ td:nth-child(4) {
 
     <div class="container">
 
-        <h1>⚛️ React Interview Questions Tracker</h1>
+
+        <!-- ================= NAVBAR ================= -->
+
+        <nav class="navbar">
+
+            <ul>
+
+                <li>
+                    <a href="#react">React</a>
+                </li>
+
+                <li>
+                    <a href="#javascript">JavaScript</a>
+                </li>
+
+                <li>
+                    <a href="#css">CSS</a>
+                </li>
+
+                <li>
+                    <a href="#html">HTML</a>
+                </li>
+
+                <li>
+                    <a href="#backend">Backend</a>
+                </li>
+
+                <li>
+                    <a href="#sql">SQL</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- ================= TITLE ================= -->
+
+        <h1>⚛️ Full Stack Interview Questions Tracker</h1>
 
 
         <!-- ================= PROGRESS ================= -->
@@ -196,19 +367,23 @@ td:nth-child(4) {
             <h2>Overall Progress</h2>
 
             <div class="progress-bar">
+
                 <div id="progressFill"></div>
+
             </div>
 
             <p id="progressText">
-                0 / 25 Completed (0%)
+                0 / 0 Completed (0%)
             </p>
 
         </div>
 
 
-        <!-- ================= REACT ================= -->
+        <!-- ========================================================= -->
+        <!-- ================= REACT ================================ -->
+        <!-- ========================================================= -->
 
-        <div class="section">
+        <div class="section" id="react">
 
             <h2>🟢 React Interview Handbook (1–25)</h2>
 
@@ -222,2182 +397,1829 @@ td:nth-child(4) {
                 </tr>
 
 
-                <!-- ================= QUESTION 1 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        1
-                    </td>
+                    <td class="question-number">1</td>
 
                     <td>
                         What is React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">React is a JavaScript library used for building interactive user interfaces. It uses reusable components and a Virtual DOM to efficiently update the UI.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 2 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        2
-                    </td>
+                    <td class="question-number">2</td>
 
                     <td>
                         What are components in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Components are reusable building blocks of a React application. They help us divide the UI into small and manageable parts.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 3 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        3
-                    </td>
+                    <td class="question-number">3</td>
 
                     <td>
                         What is JSX?
                     </td>
 
                     <td>
-
                         <textarea class="answer">JSX stands for JavaScript XML. It allows us to write HTML-like syntax inside JavaScript, which makes it easier to create the UI.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 4 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        4
-                    </td>
+                    <td class="question-number">4</td>
 
                     <td>
                         What is Virtual DOM?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Virtual DOM is a lightweight copy of the real DOM. React compares the previous and new Virtual DOM and updates only the required parts of the real DOM.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 5 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        5
-                    </td>
+                    <td class="question-number">5</td>
 
                     <td>
                         What are props in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Props are used to pass data from a parent component to a child component. Props are read-only and cannot be directly modified by the child component.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 6 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        6
-                    </td>
+                    <td class="question-number">6</td>
 
                     <td>
                         What is state in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">State is data that is managed inside a component. When the state changes, React re-renders the component and updates the UI.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 7 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        7
-                    </td>
+                    <td class="question-number">7</td>
 
                     <td>
                         What is the difference between props and state?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Props are used to pass data from parent to child, while state is used to manage data inside a component. Props are read-only, whereas state can be updated.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 8 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        8
-                    </td>
+                    <td class="question-number">8</td>
 
                     <td>
                         What is useState?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useState is a React Hook used to create and manage state in a functional component. It returns the current state and a function to update it.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 9 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        9
-                    </td>
+                    <td class="question-number">9</td>
 
                     <td>
                         What is useEffect?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useEffect is a React Hook used to handle side effects such as API calls, timers, and event listeners. It runs after the component renders.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 10 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        10
-                    </td>
+                    <td class="question-number">10</td>
 
                     <td>
                         What are React Hooks?
                     </td>
 
                     <td>
-
                         <textarea class="answer">React Hooks are functions that allow functional components to use features like state and side effects. Common Hooks are useState, useEffect, useContext, and useRef.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 11 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        11
-                    </td>
+                    <td class="question-number">11</td>
 
                     <td>
                         What is useRef?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useRef is a React Hook used to store a value that persists between renders without causing a re-render. It can also be used to access a DOM element.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 12 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        12
-                    </td>
+                    <td class="question-number">12</td>
 
                     <td>
                         What is conditional rendering?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Conditional rendering means displaying different UI elements based on a condition. We can use if-else, ternary operators, or logical operators for this.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 13 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        13
-                    </td>
+                    <td class="question-number">13</td>
 
                     <td>
                         How do you render a list in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">We usually use the map() method to render a list of elements from an array. Each element should have a unique key.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 14 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        14
-                    </td>
+                    <td class="question-number">14</td>
 
                     <td>
                         Why are keys used in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Keys help React identify individual elements in a list. They help React efficiently update, add, or remove elements when the list changes.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 15 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        15
-                    </td>
+                    <td class="question-number">15</td>
 
                     <td>
                         What is a controlled component?
                     </td>
 
                     <td>
-
                         <textarea class="answer">A controlled component is a form element whose value is controlled by React state. We use state to manage and update the input value.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 16 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        16
-                    </td>
+                    <td class="question-number">16</td>
 
                     <td>
                         What is React Router?
                     </td>
 
                     <td>
-
                         <textarea class="answer">React Router is a library used for navigation and routing in React applications. It allows us to display different components for different URLs without reloading the page.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 17 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        17
-                    </td>
+                    <td class="question-number">17</td>
 
                     <td>
                         What is lifting state up?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Lifting state up means moving state to the closest common parent component so that multiple child components can share and use the same data.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 18 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        18
-                    </td>
+                    <td class="question-number">18</td>
 
                     <td>
                         What is prop drilling?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Prop drilling means passing data through multiple components using props, even when some intermediate components do not need that data. Context API can help avoid this problem.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 19 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        19
-                    </td>
+                    <td class="question-number">19</td>
 
                     <td>
                         What is Context API?
                     </td>
 
                     <td>
-
                         <textarea class="answer">Context API allows us to share data between multiple components without passing props through every level. It is commonly used for themes and user information.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 20 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        20
-                    </td>
+                    <td class="question-number">20</td>
 
                     <td>
                         What is useMemo?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useMemo is a React Hook used to remember a calculated value. It helps avoid repeating expensive calculations when the dependencies have not changed.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 21 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        21
-                    </td>
+                    <td class="question-number">21</td>
 
                     <td>
                         What is useCallback?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useCallback is a React Hook used to remember a function between renders. It can help prevent unnecessary re-creation of functions.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 22 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        22
-                    </td>
+                    <td class="question-number">22</td>
 
                     <td>
                         What is React.memo?
                     </td>
 
                     <td>
-
                         <textarea class="answer">React.memo is used to prevent a component from re-rendering when its props have not changed. It is mainly used for performance optimization.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 23 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        23
-                    </td>
+                    <td class="question-number">23</td>
 
                     <td>
                         What is the difference between useMemo and useCallback?
                     </td>
 
                     <td>
-
                         <textarea class="answer">useMemo is used to memoize a value, while useCallback is used to memoize a function. Both can be used to optimize performance.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 24 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        24
-                    </td>
+                    <td class="question-number">24</td>
 
                     <td>
                         How do you call an API in React?
                     </td>
 
                     <td>
-
                         <textarea class="answer">We can call an API using fetch or Axios, usually inside useEffect. After receiving the response, we store the data in state and display it in the UI.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
 
-                <!-- ================= QUESTION 25 ================= -->
-
                 <tr>
-
-                    <td class="question-number">
-                        25
-                    </td>
+                    <td class="question-number">25</td>
 
                     <td>
                         How do you optimize a React application?
                     </td>
 
                     <td>
-
                         <textarea class="answer">I optimize a React application by avoiding unnecessary re-renders, using React.memo when required, using useMemo and useCallback when useful, lazy loading components, optimizing images, and keeping components reusable.</textarea>
-
                     </td>
 
                     <td>
-
                         <input type="checkbox">
-
                     </td>
-
                 </tr>
 
             </table>
 
+        </div>
+
+
+        <!-- ========================================================= -->
+        <!-- ================= JAVASCRIPT ============================ -->
+        <!-- ========================================================= -->
+
+        <div class="section" id="javascript">
+
             <h2>🟡 JavaScript Interview Handbook (1–20)</h2>
 
-<table>
+            <table>
 
-    <tr>
-        <th>#</th>
-        <th>Question</th>
-        <th>Interview Answer</th>
-        <th>Completed</th>
-    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Interview Answer</th>
+                    <th>Completed</th>
+                </tr>
 
 
-    <!-- ================= QUESTION 1 ================= -->
+                <tr>
+                    <td class="question-number">1</td>
 
-    <tr>
-        <td class="question-number">1</td>
+                    <td>
+                        What is JavaScript?
+                    </td>
 
-        <td>
-            What is JavaScript?
-        </td>
+                    <td>
+                        <textarea class="answer">JavaScript is a programming language used to make web pages interactive and dynamic. It can run in the browser and also on the server using environments like Node.js.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">JavaScript is a programming language used to make web pages interactive and dynamic. It can run in the browser and also on the server using environments like Node.js.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">2</td>
 
-    <!-- ================= QUESTION 2 ================= -->
+                    <td>
+                        What is the difference between var, let, and const?
+                    </td>
 
-    <tr>
-        <td class="question-number">2</td>
+                    <td>
+                        <textarea class="answer">var is function-scoped, while let and const are block-scoped. let can be reassigned, but const cannot be reassigned after declaration.</textarea>
+                    </td>
 
-        <td>
-            What is the difference between var, let, and const?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">var is function-scoped, while let and const are block-scoped. let can be reassigned, but const cannot be reassigned after declaration.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">3</td>
 
+                    <td>
+                        What are the data types in JavaScript?
+                    </td>
 
-    <!-- ================= QUESTION 3 ================= -->
+                    <td>
+                        <textarea class="answer">JavaScript has primitive data types like String, Number, Boolean, Undefined, Null, BigInt, and Symbol. It also has non-primitive types like Objects.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">3</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What are the data types in JavaScript?
-        </td>
 
-        <td>
-            <textarea class="answer">JavaScript has primitive data types like String, Number, Boolean, Undefined, Null, BigInt, and Symbol. It also has non-primitive types like Objects.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">4</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is the difference between == and ===?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">== compares values after type conversion, while === compares both value and data type. I prefer using === because it provides strict comparison.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 4 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">4</td>
 
-        <td>
-            What is the difference between == and ===?
-        </td>
+                <tr>
+                    <td class="question-number">5</td>
 
-        <td>
-            <textarea class="answer">== compares values after type conversion, while === compares both value and data type. I prefer using === because it provides strict comparison.</textarea>
-        </td>
+                    <td>
+                        What is hoisting?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">Hoisting is JavaScript's behavior where declarations are processed before the code is executed. Function declarations can be used before they are written in the code.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 5 ================= -->
 
-    <tr>
-        <td class="question-number">5</td>
+                <tr>
+                    <td class="question-number">6</td>
 
-        <td>
-            What is hoisting?
-        </td>
+                    <td>
+                        What is a closure?
+                    </td>
 
-        <td>
-            <textarea class="answer">Hoisting is JavaScript's behavior where declarations are processed before the code is executed. Function declarations can be used before they are written in the code.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">A closure is created when an inner function remembers and can access variables from its outer function even after the outer function has finished executing.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 6 ================= -->
+                <tr>
+                    <td class="question-number">7</td>
 
-    <tr>
-        <td class="question-number">6</td>
+                    <td>
+                        What is scope in JavaScript?
+                    </td>
 
-        <td>
-            What is a closure?
-        </td>
+                    <td>
+                        <textarea class="answer">Scope determines where a variable can be accessed in the code. JavaScript mainly has global scope, function scope, and block scope.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">A closure is created when an inner function remembers and can access variables from its outer function even after the outer function has finished executing.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">8</td>
 
-    <!-- ================= QUESTION 7 ================= -->
+                    <td>
+                        What is the difference between null and undefined?
+                    </td>
 
-    <tr>
-        <td class="question-number">7</td>
+                    <td>
+                        <textarea class="answer">undefined means a variable has been declared but has not been assigned a value, while null is an intentional value that represents no value.</textarea>
+                    </td>
 
-        <td>
-            What is scope in JavaScript?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">Scope determines where a variable can be accessed in the code. JavaScript mainly has global scope, function scope, and block scope.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">9</td>
 
+                    <td>
+                        What is a callback function?
+                    </td>
 
-    <!-- ================= QUESTION 8 ================= -->
+                    <td>
+                        <textarea class="answer">A callback is a function passed as an argument to another function and executed later. It is commonly used for asynchronous operations and event handling.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">8</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is the difference between null and undefined?
-        </td>
 
-        <td>
-            <textarea class="answer">undefined means a variable has been declared but has not been assigned a value, while null is an intentional value that represents no value.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">10</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is a Promise?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">A Promise is an object used to handle asynchronous operations. It represents a future result and can be in three states: pending, fulfilled, or rejected.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 9 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">9</td>
 
-        <td>
-            What is a callback function?
-        </td>
+                <tr>
+                    <td class="question-number">11</td>
 
-        <td>
-            <textarea class="answer">A callback is a function passed as an argument to another function and executed later. It is commonly used for asynchronous operations and event handling.</textarea>
-        </td>
+                    <td>
+                        What is async/await?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">async/await is a simpler way to work with Promises. An async function returns a Promise, and await waits for the Promise to complete before continuing.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 10 ================= -->
 
-    <tr>
-        <td class="question-number">10</td>
+                <tr>
+                    <td class="question-number">12</td>
 
-        <td>
-            What is a Promise?
-        </td>
+                    <td>
+                        What is the Event Loop?
+                    </td>
 
-        <td>
-            <textarea class="answer">A Promise is an object used to handle asynchronous operations. It represents a future result and can be in three states: pending, fulfilled, or rejected.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">The Event Loop allows JavaScript to handle asynchronous operations even though JavaScript is single-threaded. It checks the call stack and executes pending tasks when the stack is empty.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 11 ================= -->
+                <tr>
+                    <td class="question-number">13</td>
 
-    <tr>
-        <td class="question-number">11</td>
+                    <td>
+                        What is the difference between synchronous and asynchronous JavaScript?
+                    </td>
 
-        <td>
-            What is async/await?
-        </td>
+                    <td>
+                        <textarea class="answer">Synchronous code executes one operation at a time and waits for each operation to finish. Asynchronous code allows other operations to continue while waiting for tasks like API calls or timers.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">async/await is a simpler way to work with Promises. An async function returns a Promise, and await waits for the Promise to complete before continuing.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">14</td>
 
-    <!-- ================= QUESTION 12 ================= -->
+                    <td>
+                        What is an arrow function?
+                    </td>
 
-    <tr>
-        <td class="question-number">12</td>
+                    <td>
+                        <textarea class="answer">An arrow function is a shorter way to write a function in JavaScript. It also does not have its own this value and uses this from its surrounding scope.</textarea>
+                    </td>
 
-        <td>
-            What is the Event Loop?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">The Event Loop allows JavaScript to handle asynchronous operations even though JavaScript is single-threaded. It checks the call stack and executes pending tasks when the stack is empty.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">15</td>
 
+                    <td>
+                        What is the this keyword?
+                    </td>
 
-    <!-- ================= QUESTION 13 ================= -->
+                    <td>
+                        <textarea class="answer">The this keyword refers to the object associated with the current execution context. Its value depends on how the function is called.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">13</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is the difference between synchronous and asynchronous JavaScript?
-        </td>
 
-        <td>
-            <textarea class="answer">Synchronous code executes one operation at a time and waits for each operation to finish. Asynchronous code allows other operations to continue while waiting for tasks like API calls or timers.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">16</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What are higher-order functions?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">A higher-order function is a function that takes another function as an argument, returns a function, or does both. Examples include map(), filter(), and reduce().</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 14 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">14</td>
 
-        <td>
-            What is an arrow function?
-        </td>
+                <tr>
+                    <td class="question-number">17</td>
 
-        <td>
-            <textarea class="answer">An arrow function is a shorter way to write a function in JavaScript. It also does not have its own this value and uses this from its surrounding scope.</textarea>
-        </td>
+                    <td>
+                        What is the difference between map(), filter(), and reduce()?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">map() creates a new array by transforming each element, filter() creates a new array based on a condition, and reduce() combines array elements into a single value.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 15 ================= -->
 
-    <tr>
-        <td class="question-number">15</td>
+                <tr>
+                    <td class="question-number">18</td>
 
-        <td>
-            What is the this keyword?
-        </td>
+                    <td>
+                        What is destructuring in JavaScript?
+                    </td>
 
-        <td>
-            <textarea class="answer">The this keyword refers to the object associated with the current execution context. Its value depends on how the function is called.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">Destructuring is a feature that allows us to extract values from arrays or properties from objects and store them in separate variables.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 16 ================= -->
+                <tr>
+                    <td class="question-number">19</td>
 
-    <tr>
-        <td class="question-number">16</td>
+                    <td>
+                        What is the spread operator?
+                    </td>
 
-        <td>
-            What are higher-order functions?
-        </td>
+                    <td>
+                        <textarea class="answer">The spread operator (...) is used to expand elements of an array or properties of an object. It is commonly used for copying or merging arrays and objects.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">A higher-order function is a function that takes another function as an argument, returns a function, or does both. Examples include map(), filter(), and reduce().</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">20</td>
 
-    <!-- ================= QUESTION 17 ================= -->
+                    <td>
+                        What is the difference between shallow copy and deep copy?
+                    </td>
 
-    <tr>
-        <td class="question-number">17</td>
+                    <td>
+                        <textarea class="answer">A shallow copy copies the first level of an object, but nested objects are still referenced. A deep copy creates independent copies of nested objects as well.</textarea>
+                    </td>
 
-        <td>
-            What is the difference between map(), filter(), and reduce()?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">map() creates a new array by transforming each element, filter() creates a new array based on a condition, and reduce() combines array elements into a single value.</textarea>
-        </td>
+            </table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+        </div>
 
 
-    <!-- ================= QUESTION 18 ================= -->
+        <!-- ========================================================= -->
+        <!-- ================= CSS ================================== -->
+        <!-- ========================================================= -->
 
-    <tr>
-        <td class="question-number">18</td>
+        <div class="section" id="css">
 
-        <td>
-            What is destructuring in JavaScript?
-        </td>
+            <h2>🟠 CSS Interview Handbook (1–10)</h2>
 
-        <td>
-            <textarea class="answer">Destructuring is a feature that allows us to extract values from arrays or properties from objects and store them in separate variables.</textarea>
-        </td>
+            <table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Interview Answer</th>
+                    <th>Completed</th>
+                </tr>
 
 
-    <!-- ================= QUESTION 19 ================= -->
+                <tr>
+                    <td class="question-number">1</td>
 
-    <tr>
-        <td class="question-number">19</td>
+                    <td>
+                        What is CSS?
+                    </td>
 
-        <td>
-            What is the spread operator?
-        </td>
+                    <td>
+                        <textarea class="answer">CSS stands for Cascading Style Sheets. It is used to style and design HTML elements, such as colors, fonts, spacing, layouts, and responsiveness.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">The spread operator (...) is used to expand elements of an array or properties of an object. It is commonly used for copying or merging arrays and objects.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">2</td>
 
-    <!-- ================= QUESTION 20 ================= -->
+                    <td>
+                        What are the different types of CSS?
+                    </td>
 
-    <tr>
-        <td class="question-number">20</td>
+                    <td>
+                        <textarea class="answer">There are three types of CSS: Inline CSS, Internal CSS, and External CSS. Inline CSS is written inside an HTML element, Internal CSS is written inside a style tag, and External CSS is written in a separate CSS file.</textarea>
+                    </td>
 
-        <td>
-            What is the difference between shallow copy and deep copy?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">A shallow copy copies the first level of an object, but nested objects are still referenced. A deep copy creates independent copies of nested objects as well.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">3</td>
 
-</table>
+                    <td>
+                        What is the CSS Box Model?
+                    </td>
 
-<h2>🟠 CSS Interview Handbook (1–10)</h2>
+                    <td>
+                        <textarea class="answer">The CSS Box Model describes how an HTML element is structured. It consists of four parts: content, padding, border, and margin.</textarea>
+                    </td>
 
-<table>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <th>#</th>
-        <th>Question</th>
-        <th>Interview Answer</th>
-        <th>Completed</th>
-    </tr>
 
+                <tr>
+                    <td class="question-number">4</td>
 
-    <!-- ================= QUESTION 1 ================= -->
+                    <td>
+                        What is the difference between margin and padding?
+                    </td>
 
-    <tr>
-        <td class="question-number">1</td>
+                    <td>
+                        <textarea class="answer">Margin creates space outside an element, while padding creates space between the content and the element's border.</textarea>
+                    </td>
 
-        <td>
-            What is CSS?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">CSS stands for Cascading Style Sheets. It is used to style and design HTML elements, such as colors, fonts, spacing, layouts, and responsiveness.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">5</td>
 
+                    <td>
+                        What is CSS Flexbox?
+                    </td>
 
-    <!-- ================= QUESTION 2 ================= -->
+                    <td>
+                        <textarea class="answer">Flexbox is a CSS layout system used to arrange elements in a row or column. It makes it easier to align and distribute space between elements.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">2</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What are the different types of CSS?
-        </td>
 
-        <td>
-            <textarea class="answer">There are three types of CSS: Inline CSS, Internal CSS, and External CSS. Inline CSS is written inside an HTML element, Internal CSS is written inside a style tag, and External CSS is written in a separate CSS file.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">6</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is CSS Grid?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">CSS Grid is a two-dimensional layout system used to create rows and columns. It is useful for building complex and responsive page layouts.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 3 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">3</td>
 
-        <td>
-            What is the CSS Box Model?
-        </td>
+                <tr>
+                    <td class="question-number">7</td>
 
-        <td>
-            <textarea class="answer">The CSS Box Model describes how an HTML element is structured. It consists of four parts: content, padding, border, and margin.</textarea>
-        </td>
+                    <td>
+                        What is the difference between Flexbox and Grid?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">Flexbox is mainly designed for one-dimensional layouts, either a row or a column. Grid is designed for two-dimensional layouts using rows and columns.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 4 ================= -->
 
-    <tr>
-        <td class="question-number">4</td>
+                <tr>
+                    <td class="question-number">8</td>
 
-        <td>
-            What is the difference between margin and padding?
-        </td>
+                    <td>
+                        What is CSS position?
+                    </td>
 
-        <td>
-            <textarea class="answer">Margin creates space outside an element, while padding creates space between the content and the element's border.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">The position property controls how an element is positioned on a page. Common values are static, relative, absolute, fixed, and sticky.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 5 ================= -->
+                <tr>
+                    <td class="question-number">9</td>
 
-    <tr>
-        <td class="question-number">5</td>
+                    <td>
+                        What is CSS specificity?
+                    </td>
 
-        <td>
-            What is CSS Flexbox?
-        </td>
+                    <td>
+                        <textarea class="answer">CSS specificity determines which CSS rule is applied when multiple rules target the same element. Generally, inline styles have higher specificity than IDs, classes, and element selectors.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">Flexbox is a CSS layout system used to arrange elements in a row or column. It makes it easier to align and distribute space between elements.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">10</td>
 
-    <!-- ================= QUESTION 6 ================= -->
+                    <td>
+                        What are media queries in CSS?
+                    </td>
 
-    <tr>
-        <td class="question-number">6</td>
+                    <td>
+                        <textarea class="answer">Media queries are used to make websites responsive. They allow us to apply different CSS styles based on screen size, device type, or other conditions.</textarea>
+                    </td>
 
-        <td>
-            What is CSS Grid?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">CSS Grid is a two-dimensional layout system used to create rows and columns. It is useful for building complex and responsive page layouts.</textarea>
-        </td>
+            </table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+        </div>
 
 
-    <!-- ================= QUESTION 7 ================= -->
+        <!-- ========================================================= -->
+        <!-- ================= HTML ================================= -->
+        <!-- ========================================================= -->
 
-    <tr>
-        <td class="question-number">7</td>
+        <div class="section" id="html">
 
-        <td>
-            What is the difference between Flexbox and Grid?
-        </td>
+            <h2>🔵 HTML Interview Handbook (1–10)</h2>
 
-        <td>
-            <textarea class="answer">Flexbox is mainly designed for one-dimensional layouts, either a row or a column. Grid is designed for two-dimensional layouts using rows and columns.</textarea>
-        </td>
+            <table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Interview Answer</th>
+                    <th>Completed</th>
+                </tr>
 
 
-    <!-- ================= QUESTION 8 ================= -->
+                <tr>
+                    <td class="question-number">1</td>
 
-    <tr>
-        <td class="question-number">8</td>
+                    <td>
+                        What is HTML?
+                    </td>
 
-        <td>
-            What is CSS position?
-        </td>
+                    <td>
+                        <textarea class="answer">HTML stands for HyperText Markup Language. It is used to create the structure and content of web pages using elements and tags.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">The position property controls how an element is positioned on a page. Common values are static, relative, absolute, fixed, and sticky.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">2</td>
 
-    <!-- ================= QUESTION 9 ================= -->
+                    <td>
+                        What are HTML tags and elements?
+                    </td>
 
-    <tr>
-        <td class="question-number">9</td>
+                    <td>
+                        <textarea class="answer">HTML tags are keywords written inside angle brackets, such as &lt;p&gt; and &lt;h1&gt;. An HTML element usually includes the opening tag, content, and closing tag.</textarea>
+                    </td>
 
-        <td>
-            What is CSS specificity?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">CSS specificity determines which CSS rule is applied when multiple rules target the same element. Generally, inline styles have higher specificity than IDs, classes, and element selectors.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">3</td>
 
+                    <td>
+                        What is the difference between block and inline elements?
+                    </td>
 
-    <!-- ================= QUESTION 10 ================= -->
+                    <td>
+                        <textarea class="answer">Block elements usually start on a new line and take the available width, while inline elements take only the space required by their content. For example, div is a block element and span is an inline element.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">10</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What are media queries in CSS?
-        </td>
 
-        <td>
-            <textarea class="answer">Media queries are used to make websites responsive. They allow us to apply different CSS styles based on screen size, device type, or other conditions.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">4</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What are semantic HTML elements?
+                    </td>
 
-</table>
+                    <td>
+                        <textarea class="answer">Semantic HTML elements clearly describe the meaning of their content. Examples include header, nav, main, section, article, and footer.</textarea>
+                    </td>
 
-<h2>🔵 HTML Interview Handbook (1–10)</h2>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-<table>
 
-    <tr>
-        <th>#</th>
-        <th>Question</th>
-        <th>Interview Answer</th>
-        <th>Completed</th>
-    </tr>
+                <tr>
+                    <td class="question-number">5</td>
 
+                    <td>
+                        What is the difference between div and span?
+                    </td>
 
-    <!-- ================= QUESTION 1 ================= -->
+                    <td>
+                        <textarea class="answer">div is a block-level element mainly used to group larger sections of content, while span is an inline element used to style or group smaller parts of content.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">1</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is HTML?
-        </td>
 
-        <td>
-            <textarea class="answer">HTML stands for HyperText Markup Language. It is used to create the structure and content of web pages using elements and tags.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">6</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is the purpose of the HTML form?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">The HTML form element is used to collect user input. It can contain elements like input, textarea, select, and button and can submit the collected data to a server.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 2 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">2</td>
 
-        <td>
-            What are HTML tags and elements?
-        </td>
+                <tr>
+                    <td class="question-number">7</td>
 
-        <td>
-            <textarea class="answer">HTML tags are keywords written inside angle brackets, such as &lt;p&gt; and &lt;h1&gt;. An HTML element usually includes the opening tag, content, and closing tag.</textarea>
-        </td>
+                    <td>
+                        What is the difference between id and class?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">An id is normally used to uniquely identify one element, while a class can be assigned to multiple elements. Both can be used to target elements with CSS or JavaScript.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 3 ================= -->
 
-    <tr>
-        <td class="question-number">3</td>
+                <tr>
+                    <td class="question-number">8</td>
 
-        <td>
-            What is the difference between block and inline elements?
-        </td>
+                    <td>
+                        What is the use of the alt attribute in images?
+                    </td>
 
-        <td>
-            <textarea class="answer">Block elements usually start on a new line and take the available width, while inline elements take only the space required by their content. For example, div is a block element and span is an inline element.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">The alt attribute provides alternative text for an image. It is useful for accessibility and is displayed when the image cannot be loaded.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 4 ================= -->
+                <tr>
+                    <td class="question-number">9</td>
 
-    <tr>
-        <td class="question-number">4</td>
+                    <td>
+                        What is the difference between HTML and HTML5?
+                    </td>
 
-        <td>
-            What are semantic HTML elements?
-        </td>
+                    <td>
+                        <textarea class="answer">HTML5 is the modern version of HTML. It introduced semantic elements, multimedia elements like audio and video, canvas, and several improvements for modern web applications.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">Semantic HTML elements clearly describe the meaning of their content. Examples include header, nav, main, section, article, and footer.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">10</td>
 
-    <!-- ================= QUESTION 5 ================= -->
+                    <td>
+                        What is the purpose of the DOCTYPE declaration?
+                    </td>
 
-    <tr>
-        <td class="question-number">5</td>
+                    <td>
+                        <textarea class="answer">The DOCTYPE declaration tells the browser which HTML standard the document follows. In HTML5, we use &lt;!DOCTYPE html&gt; to tell the browser to use standards mode.</textarea>
+                    </td>
 
-        <td>
-            What is the difference between div and span?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">div is a block-level element mainly used to group larger sections of content, while span is an inline element used to style or group smaller parts of content.</textarea>
-        </td>
+            </table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+        </div>
 
 
-    <!-- ================= QUESTION 6 ================= -->
+        <!-- ========================================================= -->
+        <!-- ================= BACKEND =============================== -->
+        <!-- ========================================================= -->
 
-    <tr>
-        <td class="question-number">6</td>
+        <div class="section" id="backend">
 
-        <td>
-            What is the purpose of the HTML form?
-        </td>
+            <h2>🔵 Backend Interview Handbook (1–20)</h2>
 
-        <td>
-            <textarea class="answer">The HTML form element is used to collect user input. It can contain elements like input, textarea, select, and button and can submit the collected data to a server.</textarea>
-        </td>
+            <table>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Interview Answer</th>
+                    <th>Completed</th>
+                </tr>
 
 
-    <!-- ================= QUESTION 7 ================= -->
+                <tr>
+                    <td class="question-number">1</td>
 
-    <tr>
-        <td class="question-number">7</td>
+                    <td>
+                        What is Backend Development?
+                    </td>
 
-        <td>
-            What is the difference between id and class?
-        </td>
+                    <td>
+                        <textarea class="answer">Backend development is the server-side part of a web application. It handles business logic, databases, authentication, APIs, and communication between the frontend and server.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">An id is normally used to uniquely identify one element, while a class can be assigned to multiple elements. Both can be used to target elements with CSS or JavaScript.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">2</td>
 
-    <!-- ================= QUESTION 8 ================= -->
+                    <td>
+                        What is a Server?
+                    </td>
 
-    <tr>
-        <td class="question-number">8</td>
+                    <td>
+                        <textarea class="answer">A server is a system that receives requests from clients, processes them, and sends back responses. For example, when a user logs in, the frontend sends the login request to the backend server.</textarea>
+                    </td>
 
-        <td>
-            What is the use of the alt attribute in images?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">The alt attribute provides alternative text for an image. It is useful for accessibility and is displayed when the image cannot be loaded.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">3</td>
 
+                    <td>
+                        What is an API?
+                    </td>
 
-    <!-- ================= QUESTION 9 ================= -->
+                    <td>
+                        <textarea class="answer">API stands for Application Programming Interface. It allows different applications or parts of an application to communicate with each other. For example, a frontend can call a backend API to get user data.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">9</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is the difference between HTML and HTML5?
-        </td>
 
-        <td>
-            <textarea class="answer">HTML5 is the modern version of HTML. It introduced semantic elements, multimedia elements like audio and video, canvas, and several improvements for modern web applications.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">4</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is a REST API?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">REST API is an API architecture that uses HTTP methods like GET, POST, PUT, PATCH, and DELETE to perform operations on resources.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 10 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">10</td>
 
-        <td>
-            What is the purpose of the DOCTYPE declaration?
-        </td>
+                <tr>
+                    <td class="question-number">5</td>
 
-        <td>
-            <textarea class="answer">The DOCTYPE declaration tells the browser which HTML standard the document follows. In HTML5, we use &lt;!DOCTYPE html&gt; to tell the browser to use standards mode.</textarea>
-        </td>
+                    <td>
+                        What are HTTP Methods?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">Common HTTP methods are GET for reading data, POST for creating data, PUT or PATCH for updating data, and DELETE for removing data.</textarea>
+                    </td>
 
-</table>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-<h2>🔵 Backend Interview Handbook (1–20)</h2>
 
-<table>
+                <tr>
+                    <td class="question-number">6</td>
 
-    <tr>
-        <th>#</th>
-        <th>Question</th>
-        <th>Interview Answer</th>
-        <th>Completed</th>
-    </tr>
+                    <td>
+                        What are HTTP Status Codes?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">HTTP status codes tell the client whether a request was successful or failed. For example, 200 means success, 201 means created, 400 means bad request, 401 means unauthorized, 404 means not found, and 500 means server error.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 1 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">1</td>
 
-        <td>
-            What is Backend Development?
-        </td>
+                <tr>
+                    <td class="question-number">7</td>
 
-        <td>
-            <textarea class="answer">Backend development is the server-side part of a web application. It handles business logic, databases, authentication, APIs, and communication between the frontend and server.</textarea>
-        </td>
+                    <td>
+                        What is Middleware?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">Middleware is a function that runs between the incoming request and the final response. It is commonly used for authentication, logging, validation, and error handling.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 2 ================= -->
 
-    <tr>
-        <td class="question-number">2</td>
+                <tr>
+                    <td class="question-number">8</td>
 
-        <td>
-            What is a Server?
-        </td>
+                    <td>
+                        What is the difference between Authentication and Authorization?
+                    </td>
 
-        <td>
-            <textarea class="answer">A server is a system that receives requests from clients, processes them, and sends back responses. For example, when a user logs in, the frontend sends the login request to the backend server.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">Authentication checks who the user is, while authorization checks what the user is allowed to do. For example, login is authentication, while checking whether a user is an admin is authorization.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 3 ================= -->
+                <tr>
+                    <td class="question-number">9</td>
 
-    <tr>
-        <td class="question-number">3</td>
+                    <td>
+                        What is JWT?
+                    </td>
 
-        <td>
-            What is an API?
-        </td>
+                    <td>
+                        <textarea class="answer">JWT stands for JSON Web Token. It is commonly used for authentication. After successful login, the server generates a token and the client sends that token with future requests to access protected resources.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">API stands for Application Programming Interface. It allows different applications or parts of an application to communicate with each other. For example, a frontend can call a backend API to get user data.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">10</td>
 
-    <!-- ================= QUESTION 4 ================= -->
+                    <td>
+                        What is CRUD?
+                    </td>
 
-    <tr>
-        <td class="question-number">4</td>
+                    <td>
+                        <textarea class="answer">CRUD stands for Create, Read, Update, and Delete. These are the four basic operations performed on data in most backend applications.</textarea>
+                    </td>
 
-        <td>
-            What is a REST API?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">REST API is an API architecture that uses HTTP methods like GET, POST, PUT, PATCH, and DELETE to perform operations on resources.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">11</td>
 
+                    <td>
+                        What is a Database?
+                    </td>
 
-    <!-- ================= QUESTION 5 ================= -->
+                    <td>
+                        <textarea class="answer">A database is used to store and manage application data. For example, a backend can store users, products, orders, and other information in a database.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">5</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What are HTTP Methods?
-        </td>
 
-        <td>
-            <textarea class="answer">Common HTTP methods are GET for reading data, POST for creating data, PUT or PATCH for updating data, and DELETE for removing data.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">12</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is the difference between SQL and NoSQL?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">SQL databases store data in structured tables with relationships, while NoSQL databases usually store data in flexible formats such as documents. MySQL and PostgreSQL are SQL databases, while MongoDB is a NoSQL database.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 6 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">6</td>
 
-        <td>
-            What are HTTP Status Codes?
-        </td>
+                <tr>
+                    <td class="question-number">13</td>
 
-        <td>
-            <textarea class="answer">HTTP status codes tell the client whether a request was successful or failed. For example, 200 means success, 201 means created, 400 means bad request, 401 means unauthorized, 404 means not found, and 500 means server error.</textarea>
-        </td>
+                    <td>
+                        What is a Database Index?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">A database index is a data structure that helps the database find records faster. It improves read performance, but indexes require additional storage and can make write operations slightly more expensive.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 7 ================= -->
 
-    <tr>
-        <td class="question-number">7</td>
+                <tr>
+                    <td class="question-number">14</td>
 
-        <td>
-            What is Middleware?
-        </td>
+                    <td>
+                        What is a Database Relationship?
+                    </td>
 
-        <td>
-            <textarea class="answer">Middleware is a function that runs between the incoming request and the final response. It is commonly used for authentication, logging, validation, and error handling.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">A database relationship defines how data in different tables or collections is connected. Common relationships are one-to-one, one-to-many, and many-to-many.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 8 ================= -->
+                <tr>
+                    <td class="question-number">15</td>
 
-    <tr>
-        <td class="question-number">8</td>
+                    <td>
+                        What is a Transaction in a Database?
+                    </td>
 
-        <td>
-            What is the difference between Authentication and Authorization?
-        </td>
+                    <td>
+                        <textarea class="answer">A transaction is a group of database operations treated as one unit. If one important operation fails, the transaction can be rolled back to maintain data consistency.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">Authentication checks who the user is, while authorization checks what the user is allowed to do. For example, login is authentication, while checking whether a user is an admin is authorization.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">16</td>
 
-    <!-- ================= QUESTION 9 ================= -->
+                    <td>
+                        What is CORS?
+                    </td>
 
-    <tr>
-        <td class="question-number">9</td>
+                    <td>
+                        <textarea class="answer">CORS stands for Cross-Origin Resource Sharing. It is a browser security mechanism that controls whether a frontend from one origin can access resources from another origin.</textarea>
+                    </td>
 
-        <td>
-            What is JWT?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">JWT stands for JSON Web Token. It is commonly used for authentication. After successful login, the server generates a token and the client sends that token with future requests to access protected resources.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">17</td>
 
+                    <td>
+                        What is Error Handling in Backend?
+                    </td>
 
-    <!-- ================= QUESTION 10 ================= -->
+                    <td>
+                        <textarea class="answer">Error handling is the process of catching errors and returning proper responses to the client. A good backend returns meaningful status codes and messages instead of exposing internal server details.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">10</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is CRUD?
-        </td>
 
-        <td>
-            <textarea class="answer">CRUD stands for Create, Read, Update, and Delete. These are the four basic operations performed on data in most backend applications.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">18</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is Input Validation?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">Input validation checks whether the data received from the client is correct and safe before processing or storing it. For example, checking that an email has a valid format and a required field is not empty.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 11 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">11</td>
 
-        <td>
-            What is a Database?
-        </td>
+                <tr>
+                    <td class="question-number">19</td>
 
-        <td>
-            <textarea class="answer">A database is used to store and manage application data. For example, a backend can store users, products, orders, and other information in a database.</textarea>
-        </td>
+                    <td>
+                        What is Rate Limiting?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">Rate limiting controls how many requests a client can make within a specific time period. It helps prevent abuse, excessive traffic, and certain types of attacks.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 12 ================= -->
 
-    <tr>
-        <td class="question-number">12</td>
+                <tr>
+                    <td class="question-number">20</td>
 
-        <td>
-            What is the difference between SQL and NoSQL?
-        </td>
+                    <td>
+                        How do you secure a Backend API?
+                    </td>
 
-        <td>
-            <textarea class="answer">SQL databases store data in structured tables with relationships, while NoSQL databases usually store data in flexible formats such as documents. MySQL and PostgreSQL are SQL databases, while MongoDB is a NoSQL database.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">I would use authentication and authorization, input validation, HTTPS, secure password hashing, proper CORS configuration, rate limiting, environment variables for secrets, and safe error handling.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
+            </table>
 
-    <!-- ================= QUESTION 13 ================= -->
+        </div>
 
-    <tr>
-        <td class="question-number">13</td>
 
-        <td>
-            What is a Database Index?
-        </td>
+        <!-- ========================================================= -->
+        <!-- ================= SQL ================================== -->
+        <!-- ========================================================= -->
 
-        <td>
-            <textarea class="answer">A database index is a data structure that helps the database find records faster. It improves read performance, but indexes require additional storage and can make write operations slightly more expensive.</textarea>
-        </td>
+        <div class="section" id="sql">
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+            <h2>🟢 SQL Interview Handbook (1–15)</h2>
 
+            <table>
 
-    <!-- ================= QUESTION 14 ================= -->
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>Interview Answer</th>
+                    <th>Completed</th>
+                </tr>
 
-    <tr>
-        <td class="question-number">14</td>
 
-        <td>
-            What is a Database Relationship?
-        </td>
+                <tr>
+                    <td class="question-number">1</td>
 
-        <td>
-            <textarea class="answer">A database relationship defines how data in different tables or collections is connected. Common relationships are one-to-one, one-to-many, and many-to-many.</textarea>
-        </td>
+                    <td>
+                        What is SQL?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">SQL stands for Structured Query Language. It is used to communicate with relational databases to create, read, update, and delete data.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 15 ================= -->
 
-    <tr>
-        <td class="question-number">15</td>
+                <tr>
+                    <td class="question-number">2</td>
 
-        <td>
-            What is a Transaction in a Database?
-        </td>
+                    <td>
+                        What is a Primary Key?
+                    </td>
 
-        <td>
-            <textarea class="answer">A transaction is a group of database operations treated as one unit. If one important operation fails, the transaction can be rolled back to maintain data consistency.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">A primary key is a column or combination of columns that uniquely identifies each record in a table. It cannot contain duplicate or NULL values.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 16 ================= -->
+                <tr>
+                    <td class="question-number">3</td>
 
-    <tr>
-        <td class="question-number">16</td>
+                    <td>
+                        What is a Foreign Key?
+                    </td>
 
-        <td>
-            What is CORS?
-        </td>
+                    <td>
+                        <textarea class="answer">A foreign key is a column that creates a relationship between two tables. It usually refers to the primary key of another table and helps maintain data consistency.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">CORS stands for Cross-Origin Resource Sharing. It is a browser security mechanism that controls whether a frontend from one origin can access resources from another origin.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">4</td>
 
-    <!-- ================= QUESTION 17 ================= -->
+                    <td>
+                        What is the difference between DELETE, TRUNCATE, and DROP?
+                    </td>
 
-    <tr>
-        <td class="question-number">17</td>
+                    <td>
+                        <textarea class="answer">DELETE removes selected rows and can use a WHERE condition. TRUNCATE removes all rows from a table. DROP removes the entire table, including its structure.</textarea>
+                    </td>
 
-        <td>
-            What is Error Handling in Backend?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">Error handling is the process of catching errors and returning proper responses to the client. A good backend returns meaningful status codes and messages instead of exposing internal server details.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">5</td>
 
+                    <td>
+                        What are SQL Joins?
+                    </td>
 
-    <!-- ================= QUESTION 18 ================= -->
+                    <td>
+                        <textarea class="answer">SQL joins are used to combine data from multiple tables based on a related column. Common joins are INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">18</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is Input Validation?
-        </td>
 
-        <td>
-            <textarea class="answer">Input validation checks whether the data received from the client is correct and safe before processing or storing it. For example, checking that an email has a valid format and a required field is not empty.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">6</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is the difference between INNER JOIN and LEFT JOIN?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">INNER JOIN returns only the records that have matching values in both tables. LEFT JOIN returns all records from the left table and matching records from the right table. If there is no match, NULL values are returned for the right table.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 19 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">19</td>
 
-        <td>
-            What is Rate Limiting?
-        </td>
+                <tr>
+                    <td class="question-number">7</td>
 
-        <td>
-            <textarea class="answer">Rate limiting controls how many requests a client can make within a specific time period. It helps prevent abuse, excessive traffic, and certain types of attacks.</textarea>
-        </td>
+                    <td>
+                        What is the difference between WHERE and HAVING?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">WHERE filters individual rows before grouping, while HAVING filters groups after GROUP BY is applied. HAVING is commonly used with aggregate functions like COUNT, SUM, and AVG.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 20 ================= -->
 
-    <tr>
-        <td class="question-number">20</td>
+                <tr>
+                    <td class="question-number">8</td>
 
-        <td>
-            How do you secure a Backend API?
-        </td>
+                    <td>
+                        What is GROUP BY?
+                    </td>
 
-        <td>
-            <textarea class="answer">I would use authentication and authorization, input validation, HTTPS, secure password hashing, proper CORS configuration, rate limiting, environment variables for secrets, and safe error handling.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">GROUP BY is used to group rows that have the same values in specified columns. It is commonly used with aggregate functions such as COUNT, SUM, AVG, MAX, and MIN.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-</table>
 
-<h2>🟢 SQL Interview Handbook (1–15)</h2>
+                <tr>
+                    <td class="question-number">9</td>
 
-<table>
+                    <td>
+                        What are Aggregate Functions in SQL?
+                    </td>
 
-    <tr>
-        <th>#</th>
-        <th>Question</th>
-        <th>Interview Answer</th>
-        <th>Completed</th>
-    </tr>
+                    <td>
+                        <textarea class="answer">Aggregate functions perform calculations on multiple rows and return a single result. Common aggregate functions are COUNT(), SUM(), AVG(), MAX(), and MIN().</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 1 ================= -->
 
-    <tr>
-        <td class="question-number">1</td>
+                <tr>
+                    <td class="question-number">10</td>
 
-        <td>
-            What is SQL?
-        </td>
+                    <td>
+                        What is the difference between UNION and UNION ALL?
+                    </td>
 
-        <td>
-            <textarea class="answer">SQL stands for Structured Query Language. It is used to communicate with relational databases to create, read, update, and delete data.</textarea>
-        </td>
+                    <td>
+                        <textarea class="answer">UNION combines the results of two queries and removes duplicate rows. UNION ALL also combines the results but keeps duplicate rows, so it is generally faster.</textarea>
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
 
-    <!-- ================= QUESTION 2 ================= -->
+                <tr>
+                    <td class="question-number">11</td>
 
-    <tr>
-        <td class="question-number">2</td>
+                    <td>
+                        What is a Subquery?
+                    </td>
 
-        <td>
-            What is a Primary Key?
-        </td>
+                    <td>
+                        <textarea class="answer">A subquery is a query written inside another SQL query. It can be used to get intermediate results that are then used by the main query.</textarea>
+                    </td>
 
-        <td>
-            <textarea class="answer">A primary key is a column or combination of columns that uniquely identifies each record in a table. It cannot contain duplicate or NULL values.</textarea>
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
 
+                <tr>
+                    <td class="question-number">12</td>
 
-    <!-- ================= QUESTION 3 ================= -->
+                    <td>
+                        What is Normalization?
+                    </td>
 
-    <tr>
-        <td class="question-number">3</td>
+                    <td>
+                        <textarea class="answer">Normalization is the process of organizing data into multiple related tables to reduce data duplication and improve data consistency. Common normal forms include 1NF, 2NF, and 3NF.</textarea>
+                    </td>
 
-        <td>
-            What is a Foreign Key?
-        </td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            <textarea class="answer">A foreign key is a column that creates a relationship between two tables. It usually refers to the primary key of another table and helps maintain data consistency.</textarea>
-        </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                <tr>
+                    <td class="question-number">13</td>
 
+                    <td>
+                        What is an Index in SQL?
+                    </td>
 
-    <!-- ================= QUESTION 4 ================= -->
+                    <td>
+                        <textarea class="answer">An index is a database structure that helps retrieve data faster from a table. It improves query performance, especially for frequently searched columns, but it can require additional storage and affect write performance.</textarea>
+                    </td>
 
-    <tr>
-        <td class="question-number">4</td>
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-        <td>
-            What is the difference between DELETE, TRUNCATE, and DROP?
-        </td>
 
-        <td>
-            <textarea class="answer">DELETE removes selected rows and can use a WHERE condition. TRUNCATE removes all rows from a table. DROP removes the entire table, including its structure.</textarea>
-        </td>
+                <tr>
+                    <td class="question-number">14</td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        What is a View in SQL?
+                    </td>
 
+                    <td>
+                        <textarea class="answer">A view is a virtual table based on the result of a SQL query. It can be used to simplify complex queries and provide controlled access to specific data.</textarea>
+                    </td>
 
-    <!-- ================= QUESTION 5 ================= -->
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <tr>
-        <td class="question-number">5</td>
 
-        <td>
-            What are SQL Joins?
-        </td>
+                <tr>
+                    <td class="question-number">15</td>
 
-        <td>
-            <textarea class="answer">SQL joins are used to combine data from multiple tables based on a related column. Common joins are INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL OUTER JOIN.</textarea>
-        </td>
+                    <td>
+                        What is a SQL Transaction?
+                    </td>
 
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
+                    <td>
+                        <textarea class="answer">A transaction is a group of SQL operations treated as a single unit. It follows the ACID properties to maintain data consistency and reliability. Common commands are COMMIT, ROLLBACK, and SAVEPOINT.</textarea>
+                    </td>
 
+                    <td>
+                        <input type="checkbox">
+                    </td>
+                </tr>
 
-    <!-- ================= QUESTION 6 ================= -->
-
-    <tr>
-        <td class="question-number">6</td>
-
-        <td>
-            What is the difference between INNER JOIN and LEFT JOIN?
-        </td>
-
-        <td>
-            <textarea class="answer">INNER JOIN returns only the records that have matching values in both tables. LEFT JOIN returns all records from the left table and matching records from the right table. If there is no match, NULL values are returned for the right table.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 7 ================= -->
-
-    <tr>
-        <td class="question-number">7</td>
-
-        <td>
-            What is the difference between WHERE and HAVING?
-        </td>
-
-        <td>
-            <textarea class="answer">WHERE filters individual rows before grouping, while HAVING filters groups after GROUP BY is applied. HAVING is commonly used with aggregate functions like COUNT, SUM, and AVG.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 8 ================= -->
-
-    <tr>
-        <td class="question-number">8</td>
-
-        <td>
-            What is GROUP BY?
-        </td>
-
-        <td>
-            <textarea class="answer">GROUP BY is used to group rows that have the same values in specified columns. It is commonly used with aggregate functions such as COUNT, SUM, AVG, MAX, and MIN.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 9 ================= -->
-
-    <tr>
-        <td class="question-number">9</td>
-
-        <td>
-            What are Aggregate Functions in SQL?
-        </td>
-
-        <td>
-            <textarea class="answer">Aggregate functions perform calculations on multiple rows and return a single result. Common aggregate functions are COUNT(), SUM(), AVG(), MAX(), and MIN().</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 10 ================= -->
-
-    <tr>
-        <td class="question-number">10</td>
-
-        <td>
-            What is the difference between UNION and UNION ALL?
-        </td>
-
-        <td>
-            <textarea class="answer">UNION combines the results of two queries and removes duplicate rows. UNION ALL also combines the results but keeps duplicate rows, so it is generally faster.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 11 ================= -->
-
-    <tr>
-        <td class="question-number">11</td>
-
-        <td>
-            What is a Subquery?
-        </td>
-
-        <td>
-            <textarea class="answer">A subquery is a query written inside another SQL query. It can be used to get intermediate results that are then used by the main query.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 12 ================= -->
-
-    <tr>
-        <td class="question-number">12</td>
-
-        <td>
-            What is Normalization?
-        </td>
-
-        <td>
-            <textarea class="answer">Normalization is the process of organizing data into multiple related tables to reduce data duplication and improve data consistency. Common normal forms include 1NF, 2NF, and 3NF.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 13 ================= -->
-
-    <tr>
-        <td class="question-number">13</td>
-
-        <td>
-            What is an Index in SQL?
-        </td>
-
-        <td>
-            <textarea class="answer">An index is a database structure that helps retrieve data faster from a table. It improves query performance, especially for frequently searched columns, but it can require additional storage and affect write performance.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 14 ================= -->
-
-    <tr>
-        <td class="question-number">14</td>
-
-        <td>
-            What is a View in SQL?
-        </td>
-
-        <td>
-            <textarea class="answer">A view is a virtual table based on the result of a SQL query. It can be used to simplify complex queries and provide controlled access to specific data.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-
-    <!-- ================= QUESTION 15 ================= -->
-
-    <tr>
-        <td class="question-number">15</td>
-
-        <td>
-            What is a SQL Transaction?
-        </td>
-
-        <td>
-            <textarea class="answer">A transaction is a group of SQL operations treated as a single unit. It follows the ACID properties to maintain data consistency and reliability. Common commands are COMMIT, ROLLBACK, and SAVEPOINT.</textarea>
-        </td>
-
-        <td>
-            <input type="checkbox">
-        </td>
-    </tr>
-
-</table>
+            </table>
 
         </div>
 
     </div>
 
 
+    <!-- ========================================================= -->
+    <!-- ================= JAVASCRIPT ============================= -->
+    <!-- ========================================================= -->
+
     <script>
 
-        /* =========================================
-           GET ELEMENTS
-        ========================================= */
+        /* ================= GET ELEMENTS ================= */
 
         const checkboxes =
             document.querySelectorAll("input[type='checkbox']");
@@ -2406,24 +2228,25 @@ td:nth-child(4) {
             document.querySelectorAll(".answer");
 
 
-        /* =========================================
-           LOAD CHECKBOX DATA
-        ========================================= */
+        /* ================= LOAD CHECKBOX DATA ================= */
 
         checkboxes.forEach((checkbox, index) => {
 
             const savedStatus =
-                localStorage.getItem("react-check-" + index);
+                localStorage.getItem("interview-check-" + index);
 
             if (savedStatus !== null) {
-                checkbox.checked = savedStatus === "true";
+
+                checkbox.checked =
+                    savedStatus === "true";
+
             }
 
 
             checkbox.addEventListener("change", () => {
 
                 localStorage.setItem(
-                    "react-check-" + index,
+                    "interview-check-" + index,
                     checkbox.checked
                 );
 
@@ -2434,14 +2257,12 @@ td:nth-child(4) {
         });
 
 
-        /* =========================================
-           LOAD ANSWERS
-        ========================================= */
+        /* ================= LOAD ANSWERS ================= */
 
         answers.forEach((answer, index) => {
 
             const savedAnswer =
-                localStorage.getItem("react-answer-" + index);
+                localStorage.getItem("interview-answer-" + index);
 
 
             if (savedAnswer !== null) {
@@ -2454,7 +2275,7 @@ td:nth-child(4) {
             answer.addEventListener("input", () => {
 
                 localStorage.setItem(
-                    "react-answer-" + index,
+                    "interview-answer-" + index,
                     answer.value
                 );
 
@@ -2463,9 +2284,7 @@ td:nth-child(4) {
         });
 
 
-        /* =========================================
-           UPDATE PROGRESS
-        ========================================= */
+        /* ================= UPDATE PROGRESS ================= */
 
         function updateProgress() {
 
@@ -2478,14 +2297,18 @@ td:nth-child(4) {
             checkboxes.forEach(box => {
 
                 if (box.checked) {
+
                     completed++;
+
                 }
 
             });
 
 
             const percent =
-                Math.round((completed / total) * 100);
+                total === 0
+                    ? 0
+                    : Math.round((completed / total) * 100);
 
 
             document.getElementById("progressFill")
@@ -2499,9 +2322,7 @@ td:nth-child(4) {
         }
 
 
-        /* =========================================
-           INITIAL PROGRESS
-        ========================================= */
+        /* ================= INITIAL PROGRESS ================= */
 
         updateProgress();
 
